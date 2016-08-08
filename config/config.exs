@@ -12,10 +12,7 @@ config :foobar,
 # Configures the endpoint
 config :foobar, Foobar.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "vrvWSgfxgaFvssGo8cGNWigVuLU591qtWnKr6Q+ksgYU+Wil0Xk3aW9j/2GCeFpH",
-  render_errors: [view: Foobar.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Foobar.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
 
 # Configures Elixir's Logger
 config :logger, :console,

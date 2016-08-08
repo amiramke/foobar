@@ -13,12 +13,20 @@ use Mix.Config
 # which you typically run after static files are built.
 config :foobar, Foobar.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  url: [host: "fathomless-reaches-49026.herokuapp.com"]
+  #force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  #cache_static_manifest: "priv/static/manifest.json",
 
 # Do not print debug messages in production
 config :logger, level: :info
 
+#config :foobar, FooBar.Repo,
+#ssl: true
+
+config :foobar, FooBar.Repo,
+ adapter: Ecto.Adapters.Postgres,
+   url: {:system, "DATABASE_URL"},
+     pool_size: 18
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -62,4 +70,3 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
